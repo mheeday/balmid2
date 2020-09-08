@@ -1,0 +1,58 @@
+{% extends "blank.html" %}
+
+    {% block content %}
+
+     <!--                    START OF CREATED PORTFOLIO                   -->
+     <table>
+        <h3>   Delete Portfolio ?         </h3>
+        
+        <tr>
+            <th style="padding: 12px">   Product Name     </th>
+            <th style="padding: 12px">   Product Code     </th>
+            <th style="padding: 12px">   Amount Payable    </th>
+            <th style="padding: 12px">   Date Created     </th>
+            <th style="padding: 12px">   Interest    </th>
+            <th style="padding: 12px">   Duration     </th>
+            <th style="padding: 12px">   Expected Returns     </th>
+            <th style="padding: 12px">   Verify           </th>
+            <th style="padding: 12px">   Delete           </th>
+        </tr>
+        
+        <tr>    
+            <td>   {{ port.product_name }}    </td>
+            <td>   {{ port.product_code }}     </td>
+            <td>  &#8358; {{ port.amount_paid }}     </td>
+            <td style="padding: 12px">   {{ port.date_created.strftime('%d %B, %Y') }}     </td>
+            <td>   {{ port.interest_rate }} %  </td>
+            <td>   {{ port.duration }}  days  </td>
+            <td>  &#8358; {{ port.payout_amount }}     </td>
+            <td>  <a href="{{ url_for('verify', txRef=port.rave_ref) }}"> <button type="button"> Verify </button>  </a>     </td>
+
+            <td>  <button type="button" class="btn btn-primary btn-danger" data-toggle="modal" data-target="#deleteModal"> Delete </button> </td>
+        </tr>
+            
+    </table>
+    <br>
+<br>
+    <!--                    END OF CREATED PORTFOLIO                   -->
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel"> Delete Post </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="{{ url_for('confirm_delete', txRef=port.rave_ref) }}" method="POST">
+                <button type="submit" value="Delete"> Delete </button>
+          </form>>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

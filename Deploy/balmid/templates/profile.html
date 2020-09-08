@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+    {% block content %}
+        <div class="content-section">
+            <div class="media">
+                <div class="media-body">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section" style = "width: 70%; margin: auto; border: 3px ; padding: 50px;">
+            <h2 class="account-heading"> {{ current_user.first_name }} </h2>
+                    <p class="text-secondary"> {{ current_user.email }} </p>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4"> <b> Account Info </b> </legend>
+                        
+                    <div class="form-group">
+                        {{ form.first_name.label(class="form-control-label") }}
+                        {% if form.first_name.errors %}
+                            {{ form.first_name(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                            {% for error in form.first_name.errors %}
+                                <span> {{ error }} </span>
+                            {% endfor %}
+                            </div>1
+                        {% else %}
+                            {{ form.first_name(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+    
+                    <div class="form-group">
+                        {{ form.last_name.label(class="form-control-label") }}
+                        {% if form.last_name.errors %}
+                            {{ form.last_name(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                            {% for error in form.last_name.errors %}
+                                <span> {{ error }} </span>
+                            {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.last_name(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+    
+                    <div class="form-group">
+                        {{ form.email.label(class="form-control-label") }}
+                        {% if form.email.errors %}
+                            {{ form.email(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span> {{ error }} </span>
+                            {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+    
+                    <div class="form-group">
+                        {{ form.phone.label(class="form-control-label") }}
+                        {% if form.phone.errors %}
+                            {{ form.phone(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                            {% for error in form.phone.errors %}
+                                <span> {{ error }} </span>
+                            {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.phone(class="form-control form-control-lg") }}
+                        {% endif %}
+    
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </form>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/intlTelInput.min.js"></script>
+        <script>
+            var wtf_phone_field = document.getElementById('phone');
+            wtf_phone_field.style.position = 'absolute';
+            wtf_phone_field.style.top = '-9999px';
+            wtf_phone_field.style.left = '-9999px';
+            wtf_phone_field.parentElement.insertAdjacentHTML('beforeend', '<div><input type="tel" id="_phone"></div>');
+            var fancy_phone_field = document.getElementById('_phone');
+            var fancy_phone_iti = window.intlTelInput(fancy_phone_field, {
+                separateDialCode: true,
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/utils.js",
+            });
+            fancy_phone_iti.setNumber(wtf_phone_field.value);
+            fancy_phone_field.addEventListener('blur', function() {
+                wtf_phone_field.value = fancy_phone_iti.getNumber();
+            });
+        </script>
+        {% endblock content %}
+        
+    

@@ -1,0 +1,315 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section id="title">
+        <!----------------------------------------------SLIDE SHOW----------------------------------------------------------->
+
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-inerval="5000" data-pause="hover"> 
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleControls" data-slide-to="1"></li>
+                <li data-target="#carouselExampleControls" data-slide-to="2"></li>
+              </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active first-set-slider">
+                <div class="on-slider-text">
+                    <!-- <h6>Garden Care</h6>
+                    <h3>High Quality and Guaranteed</h3>
+                    <p>Lorem ipsum dolor sit amet</p> -->
+                </div>
+                  <!-- <img src="Images/agric-big-pic.jpg" class="d-block w-100" alt="..."> -->
+              </div>
+              <div class="carousel-item second-set-slider">
+                <!-- <div class="on-slider-text">
+                    <h6>Garden Care</h6>
+                    <h3>High Quality and Guaranteed</h3>
+                    <p>Lorem ipsum dolor sit amet</p>
+                </div> -->
+                <!-- <img src="Images/agric2-big-pic.jpg" class="d-block w-100" alt="..."> -->
+              </div>
+              <div class="carousel-item third-set-slider">
+                <div class="on-slider-text">
+                    <h6>Our Mission</h6>
+                    <!-- <h3>High Quality and Guaranteed</h3> -->
+                    <h3>At Balmid Industries our mission is to help strengthen the supply of fresh and high quality agricultural produce so as to reduce the level of starvation</h3>
+                </div>
+                <!-- <img src="Images/agric3-big-pic.jpg" class="d-block w-100" alt="..."> -->
+              </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-------------------------------------------------------------CONTENTS----------------------------------------------------------------------->
+
+    <section id="contents">
+        <!----------------------------------------------------------------FIRST IMAGE DISPLAY------------------------------------------------------>
+        <section class="first-image-display" id="services">
+            <h2>Our Services</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 first-set-img-div">
+                    <div>
+                        <img src="/static/images/Crop.jpg" alt="" class="first-set-img">
+                        <div class="div-img-text">
+                            <h4>Fresh Produces</h4>
+                            <!-- <p>Lorem ante ipsum primis in faucibus orci luctus eted ultrices posuere Curae primis in faucibus luctus eted.Aenean eu erat pulvinar mauris interdum tincidunt.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 first-set-img-div">
+                    <div>
+                        <img src="/static/images/Livestock.jpg" alt="" class="first-set-img">
+                        <div class="div-img-text">
+                            <h4>Farming</h4>
+                            <!-- <p>Lorem ante ipsum primis in faucibus orci luctus eted ultrices posuere Curae primis in faucibus luctus eted.Aenean eu erat pulvinar mauris interdum tincidunt.</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 first-set-img-div">
+                    <div>
+                        <img src="/static/images/Animal_Fishery.jpg" alt="" class="first-set-img">
+                        <div class="div-img-text">
+                            <h4>Animals & Fishery</h4>
+                            <!-- <p>Lorem ante ipsum primis in faucibus orci luctus eted ultrices posuere Curae primis in faucibus luctus eted.Aenean eu erat pulvinar mauris interdum tincidunt.</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        <!----------------------------------------------------------------FIRST IMAGE DISPLAY------------------------------------------------------>
+        <section class="about-us" id="about-us">
+            <div class="container-fluid">
+                <div class="about-us-first-div">
+                    <p>Who we are</p>
+                    <h3>About BALMID industries</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 about-us-text">
+                        <p>Balmid Industries Limited is a multi-producing company in which one of its primary purposes is expanding the agricultural sector of the nation. We are a group of company which focuses on the betterment and survival of the agricultural body and creating more employment opportunities for the youths and young adults. 
+                            In 2016, the company was first launched under the name Horbal Nigeria Enterprise, which engaged in the manufacturing of food and drink products and Poultry farming. But as time goes on, we decided to expand our branches and focus on farming on larger scales with the help of providing constant and non- fluctuating of food supply to the nation at large. 
+                            Balmid Industries has been breaking grounds so far, by expanding and creating more farmland’s around various cities and... <button><a href={{ url_for("about") }}>Read more</a></button></p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="/static/images/g2.jpg" alt="" width="100%">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-choose-us">
+            <div class="why-choose-us-sub-div">
+                <h4>
+                    <!-- <span>Ask Your Self</span> -->
+                    Our Goals
+                </h4>
+                <div class="row">
+                    <div class="col-lg-3 why-choose-us-div">
+                        <div class="why-choose-us-icon">
+                            <i class="fas fa-industry fa-2x"></i>
+                        </div>
+                        <h5>To increase production</h5>
+                        <!-- <p>Lorem ante ipsum primis in faucibus orci luctus eted ultrices posuere Curae primis in faucibus luctus eted.</p> -->
+                    </div>
+                    <div class="col-lg-3 why-choose-us-div">
+                        <div class="why-choose-us-icon">
+                            <i class="far fa-arrow-alt-circle-right fa-2x"></i>
+                        </div>
+                        <h5>Continuity</h5>
+                        <!-- <p>Lorem ante ipsum primis in faucibus orci luctus eted ultrices posuere Curae primis in faucibus luctus eted.</p> -->
+                    </div>
+                    <div class="col-lg-3 why-choose-us-div">
+                        <div class="why-choose-us-icon">
+                            <i class="far fa-money-bill-alt fa-2x"></i>
+                        </div>
+                        <h5>Availability & Affordability</h5>
+                        <!-- <p>Lorem ante ipsum primis in faucibus orci luctus eted ultrices posuere Curae primis in faucibus luctus eted.</p> -->
+                    </div>
+                    <div class="col-lg-3 why-choose-us-div">
+                        <div class="why-choose-us-icon">
+                            <i class="fas fa-cogs fa-2x"></i>
+                        </div>
+                        <h5>Job Creation</h5>
+                        <!-- <p>Lorem ante ipsum primis in faucibus orci luctus eted ultrices posuere Curae primis in faucibus luctus eted.</p> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-----------------------------------------------------------------INVESTMENT----------------------------------------------------------------------->
+    <section id="investment-section">
+        <h4>Investment Plan
+            <span style="display: block; font-size: 30px; color: #2a7d2e;">Tap to see the different kinds of investment plan</span>
+        </h4>
+    <div id="investment">
+        <div class="container">
+            <div class="card">
+                <div class="imgBx">
+                    <img src="/static/images/product1.jpg" width="300px" height="200px" alt="">
+                </div>
+                <div class="content">
+                    <h2> <a href={{ url_for("personalinvestment") }}>Individual Investment</a></h2>
+                    <!-- <a href="sign-in.html"><button class="btn btn-outline-dark">Sign in</button></a>
+                    <a href="sign-up-page.html"><button class="btn btn-outline-dark">Sign-up</button></a> -->
+                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eismod tempor incididunt ut labore et doloremagna aliqua. Ut enim ad minim veniam</p> -->
+                </div>
+            </div>
+            <!-- <div class="card">
+                <div class="imgBx">
+                    <img src="Images/product2.jpg" width="300px" height="200px" alt="">
+                </div>
+                <div class="content">
+                    <h2><a href="#">Joint Investment</a></h2>
+                    <a href="sign-in.html"><button class="btn btn-outline-dark">Sign in</button></a>
+                    <a href="sign-up-page.html"><button class="btn btn-outline-dark">Sign-up</button></a>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eismod tempor incididunt ut labore et doloremagna aliqua. Ut enim ad minim veniam</p> 
+                </div>
+            </div> -->
+            <div class="card">
+                <div class="imgBx">
+                    <img src="/static/images/procuct3.jpg" width="300px" height="200px" alt="">
+                </div>
+                <div class="content">
+                    <h2><a href="#">Corporate Investment</a></h2>
+                    <!-- <a href="sign-in.html"><button class="btn btn-outline-dark">Sign in</button></a>
+                    <a href="sign-up-page.html"><button class="btn btn-outline-dark">Sign-up</button></a> -->
+                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eismod tempor incididunt ut labore et doloremagna aliqua. Ut enim ad minim veniam</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    </section>
+
+    <section id="testimonial">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="pause" data-inerval="5000">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            
+            <div class="carousel-inner testimonial-carousel-inner">
+                <h3>
+                    <span>Our clients</span>
+                    What People Say
+                </h3>
+              <div class="carousel-item active testimonial-carousel-item">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tempus consectetur tempor. Nullam ipsum sem.</p>
+                <img src="/static/images/c1.jpg" class="d-block testimonial-image" alt="...">
+              </div>
+              <div class="carousel-item testimonial-carousel-item">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tempus consectetur tempor. Nullam ipsum sem.</p>
+                <img src="/static/images/c2.jpg" class="d-block testimonial-image" alt="...">
+              </div>
+              <div class="carousel-item testimonial-carousel-item">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tempus consectetur tempor. Nullam ipsum sem.</p>
+                <img src="/static/images/c3.jpg" class="d-block testimonial-image" alt="...">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </section>
+    <section id="contact-us">
+        <div class="container-fluid" id="Contact-us">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form action="mailto:ifo@balmidindustires.com" method="POST" enctype="text/plain" class="form">
+                        
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" name="Name " id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" name="Email " id="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone-number">Phone Number</label>
+                                <input type="text" name="Phone Number " id="phone-number" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Comments</label>
+                                <textarea name="Comments " id="" cols="30" rows="5" class="form-control"></textarea>
+                            </div>
+                            <div>
+                                <button class="btn btn-block btn-outline-dark">Submit</button>
+                            </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 contact-us-list">
+                    <ul>
+                        <li>No. 1, Isewo-way, along Ikala road, Ijebu Imushin, Ogun state, Nigeria.</li>
+                        <li class="phone"><i class="fas fa-mobile-alt fa-1x"></i> +234-80-74744004 </li>
+                        <li class="phone"><i class="fas fa-mobile-alt fa-1x"></i> +234-80-20921839</li>
+                        <li class="phone"><i class="fas fa-mobile-alt fa-1x"></i>+234-80-37269892</li>
+                        <li class="phone">info@balmidindustries.com</li>
+                        <li class="green">Or</li>
+                        <li class="button-list">
+                            <a href="https://wa.me/2348091545090?text=Hello Balmid"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="footer">
+        <div class='container-fluid footer-container-fluid'>
+            <ul>
+                <li>
+                    <a href="https://www.facebook.com" target="_blank">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="fa fa-facebook"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="fa fa-twitter"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://wa.me/2348091545090?text=Hello Balmid">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="fa fa-whatsapp"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="fa fa-linkedin"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/balmidindustries">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="fa fa-instagram"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    {% endblock content %}
+

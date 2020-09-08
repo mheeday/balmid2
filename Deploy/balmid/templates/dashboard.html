@@ -1,0 +1,174 @@
+{% extends "blank.html" %}
+
+    {% block content %}
+        <h2>   Portfolios        </h2>
+
+         <!--                    START OF ACTIVE PORTFOLIO                   -->
+         <table>
+            <h3>   Active Portfolios         </h3>
+            <tr>
+                <th style= "padding: 8px">   S/N     </th>
+                <th style= "padding: 8px">   Product Name     </th>
+                <th style= "padding: 8px">   Product Code     </th>
+                <th style= "padding: 8px">   Amount Paid     </th>
+                <th style= "padding: 8px">   Date Paid     </th>
+                <th style= "padding: 8px">   Interest   </th>
+                <th style= "padding: 8px">   Duration     </th>
+                <th style= "padding: 8px">   Expected Returns      </th>
+                <th style= "padding: 8px">   Payout Date     </th>
+            </tr>
+
+                {% if active_ports %}
+                {% for port in active_ports %}
+                <tr> 
+                    <td>   {{ loop.index }} </td>
+                    <td>   {{ port.product_name }}    </td>
+                    <td>   {{ port.product_code }}     </td>
+                    <td> &#8358;  {{ port.amount_paid }}     </td>
+                    <td style= "padding: 8px">   {{ port.date_paid.strftime('%d %B, %Y') }}     </td>
+                    <td>   {{ port.interest_rate }} %    </td>
+                    <td>   {{ port.duration }} days    </td>
+                    <td>  &#8358; {{ port.payout_amount }}     </td>
+                    <td>   {{ port.payout_date.strftime('%d %B, %Y') }}     </td>
+                </tr>
+                {% endfor %}
+
+                {% else %}
+                <tr>
+                    <td colspan="9">   No Active Portfolios </td>
+                </tr>
+                {% endif %}
+        </table>
+        <br>
+        <br>
+        <!--                    END OF ACTIVE PORTFOLIO                   -->
+
+
+         <!--                    START OF CREATED PORTFOLIO                   -->
+        <table>
+            <h3>   CREATED Portfolios         </h3>
+            
+            <tr>
+                <th style= "padding: 8px">   S/N     </th>
+                <th style= "padding: 8px">   Product Name     </th>
+                <th style= "padding: 8px">   Product Code     </th>
+                <th style= "padding: 8px">   Amount Payable    </th>
+                <th style= "padding: 8px">   Date Created     </th>
+                <th style= "padding: 8px">   Interest    </th>
+                <th style= "padding: 8px">   Duration     </th>
+                <th style= "padding: 8px">   Expected Returns     </th>
+                <th style= "padding: 8px">   Pay Now           </th>
+                <th style= "padding: 8px">   Verify           </th>
+                <th style= "padding: 8px">   Delete           </th>
+            </tr>
+            
+            
+                {% if no_value %}
+                <tr> 
+                    <td colspan="11">   No Created Portfolios </td>
+                </tr>
+                {% else %}
+                {% for port in pending_ports %}
+                <tr>    
+                <td>   {{ loop.index }} </td>
+                <td>   {{ port.product_name }}    </td>
+                <td>   {{ port.product_code }}     </td>
+                <td>  &#8358; {{ port.amount_paid }}     </td>
+                <td style= "padding: 8px">   {{ port.date_created.strftime('%d %B, %Y') }}     </td>
+                <td>   {{ port.interest_rate }} %  </td>
+                <td>   {{ port.duration }}  days  </td>
+                <td>  &#8358; {{ port.payout_amount }}     </td>
+                <td>  
+                    <form action="">
+                        <input type="hidden" class="name" value="{{ current_user.first_name +' ' + current_user.last_name }}">
+                        <input type="hidden" class="txRef" value= "{{ port.rave_ref }}">
+                        <input type="hidden" class="amount" value= "{{ port.amount_paid }}" >
+                        <input type="hidden" class="email" value="{{ current_user.email }}">
+                        <input type="hidden" class="phone" value="{{ current_user.phone }}">
+                        <button type="button" value="{{ loop.index -1 }}"onClick="makePayment(value)" id="submit"> Buy Now  </button>        
+                    </form>
+                </td>
+                <td>  <a href="{{ url_for('verify', txRef=port.rave_ref) }}"> <button type="button"> Verify </button>  </a>     </td>
+                <td>  <a href="{{ url_for('delete_portfolio', txRef=port.rave_ref) }}"> <button type="button"> Delete </button>  </a>   </td>
+                </tr>
+                {% endfor %}
+                
+                {% endif %}
+        </table>
+        <br>
+    <br>
+        <!--                    END OF CREATED PORTFOLIO                   -->
+
+         <!--                    START OF FAILED PORTFOLIO                   -->
+         <table>
+            <h3>   FAILED Portfolios         </h3>
+            <tr>
+                <th style= "padding: 8px">   S/N     </th>
+                <th style= "padding: 8px">   Product Name     </th>
+                <th style= "padding: 8px">   Product Code     </th>
+                <th style= "padding: 8px">   Amount Due     </th>
+                <th style= "padding: 8px">   Date Created     </th>
+                <th style= "padding: 8px">   Reference     </th>
+            </tr>
+            
+            
+                {% if no_value %}
+                <tr> 
+                    <td colspan="9">   No Failed Portfolios </td>
+                </tr>
+
+                {% else %}
+                {% for port in failed_ports %}
+                <tr> 
+                <td>   {{ loop.index }} </td>
+                <td>   {{ port.product_name }}    </td>
+                <td>   {{ port.product_code }}     </td>
+                <td> &#8358; {{ port.amount_paid }}     </td>
+                <td style= "padding: 8px">   {{ port.date_created.strftime('%d %B, %Y') }}     </td>    
+                <td>   {{ port.rave_ref }}     </td>
+            </tr>
+                {% endfor %}
+                {% endif %}
+            
+        </table>
+        
+        <!--                    END OF FAILED PORTFOLIO                   -->
+
+
+   <script src="https://checkout.flutterwave.com/v3.js"></script>
+   <script>
+    function makePayment(value) {
+        var full_name = document.getElementsByClassName('name')[value].value;
+        var txRef = document.getElementsByClassName('txRef')[value].value;
+        var amount = document.getElementsByClassName('amount')[value].value;
+        var email = document.getElementsByClassName('email')[value].value;
+        var phone = document.getElementsByClassName('phone')[value].value;
+
+      FlutterwaveCheckout({
+        public_key: "FLWPUBK_TEST-515b15ec94b52fa76b9247665ed97def-X",
+        tx_ref: txRef,
+        amount: amount,
+        currency: "NGN",
+        payment_options: "card, mobilemoneyghana, ussd",
+        redirect_url: // specified redirect URL
+          "{{ url_for('dashboard') }}",
+        
+        customer: {
+          email: email,
+          phone_number: phone,
+          name: full_name,
+        },
+        callback: function (data) {
+          console.log(data);
+        },
+        onclose: function() {
+          // close modal
+        },
+        
+      });
+    }
+  </script>
+
+<!-- Modal -->
+    
+    {% endblock content %}

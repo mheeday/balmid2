@@ -1,0 +1,67 @@
+{% extends "blank.html" %}
+
+    {% block content %}
+
+
+    <h3>   Investment Purchase         </h3>
+
+    <table>
+        <tr>
+            <th style="padding: 12px">   S/N                </th>
+            <th style="padding: 12px">   Product Name       </th>
+            <th style="padding: 12px">   Product Code       </th>
+            <th style="padding: 12px">   Amount Paid        </th>
+            <th style="padding: 12px">   Date Paid          </th>
+        </tr>
+        
+        <tr>
+            {% if no_value %}
+                <td colspan="9">   No Investment Purchase </td>
+        </tr>
+
+            {% else %}
+            {% for purchase in purchases %}
+            <tr> 
+                <td>   {{ loop.index }} </td>
+                <td>   {{ purchase.product_name }}    </td>
+                <td>   {{ purchase.product_code }}     </td>
+                <td> &#8358;  {{ purchase.amount_paid }}     </td>
+                <td style="padding: 12px">   {{ purchase.date_paid.strftime('%d %B, %Y') }}     </td>
+            </tr>
+        {% endfor %}
+            {% endif %}
+    </table>
+    <br>
+    <br>
+    <br>
+
+
+    <h3>   Investment Return         </h3>
+    <table>
+        <tr>
+            <th style="padding: 12px">   S/N                </th>
+            <th style="padding: 12px">   Product Name       </th>
+            <th style="padding: 12px">   Product Code       </th>
+            <th style="padding: 12px">   Payment Due        </th>
+            <th style="padding: 12px">   Payment Status          </th>
+        </tr>
+        
+        <tr>
+            {% if no_value %}
+                <td colspan="9">   No Investment Returns </td>
+        </tr>
+
+            {% else %}
+            {% for return in returns %}
+            <tr> 
+                <td>   {{ loop.index }} </td>
+                <td>   {{ return.product_name }}    </td>
+                <td>   {{ return.product_code }}     </td>
+                <td> &#8358;  {{ return.payout_amount }}     </td>
+                <td>    {{ return.paid_out }}  </td>
+            </tr>
+        {% endfor %}
+            {% endif %}
+    </table>
+
+    {% endblock content %}
